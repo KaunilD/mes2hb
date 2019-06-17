@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+mes2hb/__init__.py
+mes2hb/absorption_coefficients.py
+mes2hb/mes2hb.py
+mes2hb.egg-info/PKG-INFO
+mes2hb.egg-info/SOURCES.txt
+mes2hb.egg-info/dependency_links.txt
+mes2hb.egg-info/top_level.txt
