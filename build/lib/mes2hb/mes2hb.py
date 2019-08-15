@@ -16,20 +16,20 @@ class Mes2Hb:
             The arrays returned will have baseline measurements
             zeroed out making the resulting in fewer rows than
             mes_data.
-            
+
             params:
-                mes_data(np.ndarray): a Nx2 dimensional array with 
+                mes_data(np.ndarray): a Nx2 dimensional array with
                 1st column containing red wavelength values and
                 2nd column containing infra-red wavelength values.
-                
-                baseline(list): first and last indices of rows to 
+
+                baseline(list): first and last indices of rows to
                 be accounted for baseline correction
-                
+
                 wavelength(list): precise wavelengths of red and infra-red
                 channels obtained from the sensor.
             returns:
                 hbo, hb, hbt(np.ndarray): 3 (N-baseline[1]-baseline[0], 1) arrays
-                containing oxy, de-oxy and total haemoglobin concentrations. 
+                containing oxy, de-oxy and total haemoglobin concentrations.
         """
         red_mes_data = np.reshape(
             mes_data[0], (mes_data[0].shape[0], 1)
@@ -88,4 +88,4 @@ class Mes2Hb:
         	hb = (a_red*oxy_ir - a_ir*oxy_red)/(dxy_red*oxy_ir - dxy_ir*oxy_red)
 
         hbt = hbo + hb
-        return hbo, hb, hbt
+        return hbo[baseline[1]:], hb[baseline[1]:], hbt[baseline[1]:]
